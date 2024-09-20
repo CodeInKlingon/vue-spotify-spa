@@ -1,18 +1,10 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import TrackSearch from "../components/TrackSearch.vue";
 import Button from "primevue/button";
-import { useTemplateRef } from "vue";
-import { dragAndDrop } from "@formkit/drag-and-drop";
 
-// const trackListRef = useTemplateRef("trackListRef");
-const tracks = ref<any[]>([]);
-const trackListRef = ref();
+import { useDragAndDrop } from "@formkit/drag-and-drop/vue";
 
-dragAndDrop({
-	parent: trackListRef,
-	values: tracks,
-});
+const [parentRef, tracks] = useDragAndDrop([]);
 
 function addTrack(track: any) {
 	console.log(track);
@@ -34,15 +26,22 @@ function removeTrack(index: number) {
 		<thead>
 			<tr>
 				<th></th>
+				<th></th>
 				<th>Track</th>
 				<th>Album</th>
+				<th></th>
 			</tr>
 		</thead>
-		<tbody ref="trackListRef">
+		<tbody ref="parentRef">
 			<tr v-if="tracks.length === 0">
 				<td colspan="4">No tracks added</td>
 			</tr>
-			<tr class="track-item" v-for="(track, index) in tracks" @click="playTrack(index)">
+			<tr class="track-item" v-for="(track, index) in tracks" :key="track.id" @click="playTrack(index)">
+				<td>
+					<div class="handle">
+						<i class="pi pi-bars"></i>
+					</div>
+				</td>
 				<td><img class="track-image" :src="track.album.images[0].url" /></td>
 				<td>
 					<div class="track-info">
