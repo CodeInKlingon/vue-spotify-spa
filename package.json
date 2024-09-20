@@ -1,0 +1,27 @@
+{
+	"name": "vue-spotify-ensemble",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vue-tsc && vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@formkit/drag-and-drop": "^0.1.6",
+		"@primevue/themes": "^4.0.5",
+		"js-cookie": "^3.0.5",
+		"primeicons": "^7.0.0",
+		"primevue": "^4.0.5",
+		"vue": "^3.5.3",
+		"vue-router": "^4.4.3"
+	},
+	"devDependencies": {
+		"@types/js-cookie": "^3.0.6",
+		"@vitejs/plugin-vue": "^4.5.0",
+		"typescript": "^5.2.2",
+		"vite": "^5.0.0",
+		"vue-tsc": "^1.8.22"
+	}
+}
